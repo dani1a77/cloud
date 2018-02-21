@@ -18,11 +18,11 @@
 Заходим на страничку модуля в marketplace http://marketplace.1c-bitrix.ru/solutions/cloudpayments.cloudpayment/, жмем установить, указываем url сайта, нас перебросит на сайт. После чего нужно авторизоваться под админом, и скачать и установить модуль.
 
 ### Ручная установка
-![]({{site.baseurl}})
+
 1.	Копируем архив с github. На ftp создаем папку /bitrix/modules/cloudpayments.cloudpayment
 2.	В папку копируем все содержимое из архивной папки \cloudpayments.cloudpayment\.last_version\ 
 3.	Итого в папке /bitrix/modules/cloudpayments.cloudpayment должны быть следующие файлы 
-![]({{site.baseurl}}/https://yadi.sk/i/jD1DjIQj3Rb5tH)
+![]({{site.baseurl}}/images/img1.png)
 4.	Далее переходим в раздел установки решений c marketplace в админке /bitrix/admin/partner_modules.php?lang=ru. И жмем напротив скопированного модуля ![]({{site.baseurl}}/https://yadi.sk/i/S1Gm9jkE3Rb6Wf) установить
 
 

@@ -22,7 +22,7 @@
 1.	Копируем архив с github. На ftp создаем папку /bitrix/modules/cloudpayments.cloudpayment
 2.	В папку копируем все содержимое из архивной папки \cloudpayments.cloudpayment\.last_version\ 
 3.	Итого в папке /bitrix/modules/cloudpayments.cloudpayment должны быть следующие файлы 
-![0](https://github.com/dani1a77/cloud/tree/master/img1.png)
+![0](http://cloud.websputnik.su/git/img1.png)
 4.	Далее переходим в раздел установки решений c marketplace в админке /bitrix/admin/partner_modules.php?lang=ru. И жмем напротив скопированного модуля ![]({{site.baseurl}}/https://yadi.sk/i/S1Gm9jkE3Rb6Wf) установить
 
 

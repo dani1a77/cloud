@@ -24,7 +24,7 @@
 3.	Итого в папке /bitrix/modules/cloudpayments.cloudpayment должны быть следующие файлы 
 ![0](http://cloud.websputnik.su/git/img1.png)
 4.	Далее переходим в раздел установки решений c marketplace в админке /bitrix/admin/partner_modules.php?lang=ru. И жмем напротив скопированного модуля - установить. ![0](http://cloud.websputnik.su/git/img2.png)
-
+5. Чтобы модуль корректно работал, нужно внести ряд изменений в настройки модуля, а также настроить работу вебхуков в личном кабинете - https://merchant.cloudpayments.ru/Account/Login. Настройки модуля и настройки вебхуков описаны ниже.
 
 ### Настройка модуля
 
@@ -52,40 +52,28 @@ https://yadi.sk/i/ljItfaVa3SeNia
 - **Статус возврата платежа** - в этом пункте выбирается какой статус заказа, отвечает за возврат платежа. Т.е. выбрав указанный в этом пункте статус, в заказе, будет выполнена функция возврата платежа через API cloudpayments.
 - **Статус авторизации платежа (двухстадийные платежи)** - в этом пункте выбирнается какой статус заказа, будет установлен после оплаты пользователем при двухстадийной схеме платежей.
 **Статус отмена авторизованного платежа (двухстадийные платежи)** - в этом пункте выбирается какой статус заказа, нужно выбрать в заказе, чтобы произвести отмену оплаты при двухстадийной схеме платежей, в момент когда оплата не подтверждена, а только авторизована. Подробнее о двухстадийной схеме оплат, можно прочитать у нас на сайте https://cloudpayments.ru/Docs/Integration#schemes
-
-
-
+- **Выберите НДС на доставку, если необходимо** - в данном разделе можно установить размер ндс, с привязкой к добавленным на сайте службам доставки.
 
 
 ### Настройка вебхуков:
 
-Так как  настройка ЧПУ(Семантический URL) может быть отличной от параметра по умолчаню,
- то для корректной настройки вебхуков лучше всего будет использовать след. способ:
+Для корректной работы модуля, а именно подтверждения оплаты, подтверждения авторизации и прочих действий, нужно прописать правильные url в настройках вебхуков. 
+Так как  настройка ЧПУ(Семантический URL) может быть отличной от параметра по умолчаню, то для корректной настройки вебхуков лучше всего будет использовать след. способ:
+Для настройки вебхуков:
+1) Авторизуемся в личном кабинете по ссылке https://merchant.cloudpayments.ru/Account/Login
+2) Переходим в "Сайты"
+![0](http://cloud.websputnik.su/git/img4.png)
+3) Добавляем свой сайт, если еще не добавили и переходим в настройки
+![0](http://cloud.websputnik.su/git/img5.png)
 
 Копируем линк ниже для соответсвующего вебхука:
 
-* (Check) 		index.php?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&cloudpayments_check
-* (Pay) 		index.php?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&cloudpayments_pay
-* (Confirm)		index.php?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&cloudpayments_confirm
-* (Refund)		index.php?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&cloudpayments_refund
+* (Check) 		#SITE_URL#/bitrix/tools/sale_ps_result.php?action=check
+* (Fail) 		#SITE_URL#/bitrix/tools/sale_ps_result.php?action=fail
+* (Pay) 		#SITE_URL#/bitrix/tools/sale_ps_result.php?action=pay
+* (Confirm)		#SITE_URL#bitrix/tools/sale_ps_result.php?action=confirm
+* (Refund)		#SITE_URL#/bitrix/tools/sale_ps_result.php?action=refund
 
-Открываем свой сайт, например,  http://**yourdomain.name** или https://**yourdomain.name**, где **yourdomain.name** - доменное имя сайта.
-
-В итоге, должно получится что-то вроде:
-http://**yourdomain.name**/index.php?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&cloudpayments_check
-
-Открыв его, вы увидите ответ:
-![8](https://github.com/cloudpayments/CMS-Joomla-VirtueMart-CP/blob/master/Images/8.PNG)
-Если все верно, то настройки ЧПУ преобразуют ссылку,
-например, в http://**yourdomain.name**/ru/?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&cloudpayments_check
-
-Преобразованная ссылка  будет являться необходимым URL для check-уведомления в ЛК CloudPayments.
-Аналогичным образом настройте остальные вебхуки.
-
-![9](https://github.com/cloudpayments/CMS-Joomla-VirtueMart-CP/blob/master/Images/9.PNG)
+Где #SITE_URL# - адрес сайта. Например: http://domain.ru
 
 
-Внимание!!! Убедитесь, что используемые валюты в глобальных настройках VirtueMart'а,
- а именно их трехбуквенные наименования совпадают с  параметрами, поддерживающимися сервисом отправки чеков.
-https://cloudpayments.ru/Docs/Directory#currencies  
-Так же будьте внимательны с настройками НДС.

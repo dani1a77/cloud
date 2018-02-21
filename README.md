@@ -23,6 +23,7 @@
 2.	В папку копируем все содержимое из архивной папки \cloudpayments.cloudpayment\.last_version\ 
 3.	Итого в папке /bitrix/modules/cloudpayments.cloudpayment должны быть следующие файлы 
 ![8](https://github.com/dani1a77/cloud/tree/master/images/img1.png)
+![1]({{site.baseurl}}/https://github.com/dani1a77/cloud/tree/master/images/img1.png)
 4.	Далее переходим в раздел установки решений c marketplace в админке /bitrix/admin/partner_modules.php?lang=ru. И жмем напротив скопированного модуля ![]({{site.baseurl}}/https://yadi.sk/i/S1Gm9jkE3Rb6Wf) установить
 
 

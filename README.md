@@ -40,7 +40,7 @@
 Заполняем:
 - «Public ID»
 - «Пароль для API», и выбираем «Тип схемы проведения платежей»
-https://yadi.sk/i/ljItfaVa3SeNia
+![0](http://cloud.websputnik.su/git/slide11.png)
 Остальные параметры заполняем на свое усмотрение. 
 
 
